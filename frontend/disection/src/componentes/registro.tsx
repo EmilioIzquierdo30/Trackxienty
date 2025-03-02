@@ -150,4 +150,49 @@ const Registro: React.FC = () => {
   );
 };
 
+const styles = {
+    container: {
+      maxWidth: '400px',
+      margin: '0 auto',
+      padding: '20px',
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      backgroundColor: '#f9f9f9',
+    },
+    title: {
+      color: '#333',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column' as 'column',
+    },
+    formGroup: {
+      marginBottom: '15px',
+    },
+    label: {
+      marginBottom: '5px',
+      fontWeight: 'bold',
+    },
+    input: {
+      padding: '10px',
+      borderRadius: '4px',
+      border: '1px solid #ccc',
+      fontSize: '16px',
+    },
+    button: {
+      padding: '10px',
+      borderRadius: '4px',
+      border: 'none',
+      backgroundColor: '#007bff',
+      color: '#fff',
+      fontSize: '16px',
+      cursor: 'pointer',
+    },
+    error: {
+      color: 'red',
+      fontSize: '14px',
+      marginTop: '5px',
+    },
+  };
+
 export default Registro;
