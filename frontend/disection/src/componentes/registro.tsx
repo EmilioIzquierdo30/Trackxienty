@@ -70,129 +70,133 @@ const Registro: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Registro en EduAlert</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div style={styles.container}>
+      <h1 style={styles.title}>Registro en EduAlert</h1>
+      <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
         {/* Campos para estudiantes */}
         {rolSeleccionado === 'estudiante' && (
           <>
-            <div>
-              <label>Nombre:</label>
-              <input {...register('nombre')} />
-              {errors.nombre && <p>{errors.nombre.message}</p>}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Nombre:</label>
+              <input {...register('nombre')} style={styles.input} />
+              {errors.nombre && <p style={styles.error}>{errors.nombre.message}</p>}
             </div>
 
-            <div>
-              <label>Apellido Paterno:</label>
-              <input {...register('apellidopaterno')} />
-              {errors.apellidopaterno && <p>{errors.apellidopaterno.message}</p>}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Apellido Paterno:</label>
+              <input {...register('apellidopaterno')} style={styles.input} />
+              {errors.apellidopaterno && <p style={styles.error}>{errors.apellidopaterno.message}</p>}
             </div>
 
-            <div>
-              <label>Apellido Materno:</label>
-              <input {...register('apellidomaterno')} />
-              {errors.apellidomaterno && <p>{errors.apellidomaterno.message}</p>}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Apellido Materno:</label>
+              <input {...register('apellidomaterno')} style={styles.input} />
+              {errors.apellidomaterno && <p style={styles.error}>{errors.apellidomaterno.message}</p>}
             </div>
           </>
         )}
 
         {/* Campos comunes para todos los roles */}
-        <div>
-          <label>Correo Electrónico:</label>
-          <input {...register('email')} />
-          {errors.email && <p>{errors.email.message}</p>}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Correo Electrónico:</label>
+          <input {...register('email')} style={styles.input} />
+          {errors.email && <p style={styles.error}>{errors.email.message}</p>}
         </div>
 
-        <div>
-          <label>Contraseña:</label>
-          <input type="password" {...register('contraseña')} />
-          {errors.contraseña && <p>{errors.contraseña.message}</p>}
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Contraseña:</label>
+          <input type="password" {...register('contraseña')} style={styles.input} />
+          {errors.contraseña && <p style={styles.error}>{errors.contraseña.message}</p>}
         </div>
 
-        <div>
-          <label>Rol:</label>
-          <select {...register('rol')}>
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Rol:</label>
+          <select {...register('rol')} style={styles.input}>
             <option value="estudiante">Estudiante</option>
             <option value="institucion">Institución Educativa</option>
             <option value="gobierno">Gobierno</option>
           </select>
-          {errors.rol && <p>{errors.rol.message}</p>}
+          {errors.rol && <p style={styles.error}>{errors.rol.message}</p>}
         </div>
 
         {/* Campos adicionales dependiendo del rol seleccionado */}
         {rolSeleccionado === 'estudiante' && (
-          <div>
-            <label>Matrícula:</label>
-            <input {...register('matricula')} />
-            {errors.matricula && <p>{errors.matricula.message}</p>}
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Matrícula:</label>
+            <input {...register('matricula')} style={styles.input} />
+            {errors.matricula && <p style={styles.error}>{errors.matricula.message}</p>}
           </div>
         )}
 
         {rolSeleccionado === 'institucion' && (
-          <div>
-            <label>Nombre de la Institución:</label>
-            <input {...register('nombreInstitucion')} />
-            {errors.nombreInstitucion && <p>{errors.nombreInstitucion.message}</p>}
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Nombre de la Institución:</label>
+            <input {...register('nombreInstitucion')} style={styles.input} />
+            {errors.nombreInstitucion && <p style={styles.error}>{errors.nombreInstitucion.message}</p>}
           </div>
         )}
 
         {rolSeleccionado === 'gobierno' && (
-          <div>
-            <label>Departamento:</label>
-            <input {...register('departamento')} />
-            {errors.departamento && <p>{errors.departamento.message}</p>}
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Departamento:</label>
+            <input {...register('departamento')} style={styles.input} />
+            {errors.departamento && <p style={styles.error}>{errors.departamento.message}</p>}
           </div>
         )}
 
-        <button type="submit">Registrarse</button>
+        <button type="submit" style={styles.button}>Registrarse</button>
       </form>
     </div>
   );
 };
 
+// Estilos para el componente
 const styles = {
-    container: {
-      maxWidth: '400px',
-      margin: '0 auto',
-      padding: '20px',
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      backgroundColor: '#f9f9f9',
-    },
-    title: {
-      color: '#333',
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column' as 'column',
-    },
-    formGroup: {
-      marginBottom: '15px',
-    },
-    label: {
-      marginBottom: '5px',
-      fontWeight: 'bold',
-    },
-    input: {
-      padding: '10px',
-      borderRadius: '4px',
-      border: '1px solid #ccc',
-      fontSize: '16px',
-    },
-    button: {
-      padding: '10px',
-      borderRadius: '4px',
-      border: 'none',
-      backgroundColor: '#007bff',
-      color: '#fff',
-      fontSize: '16px',
-      cursor: 'pointer',
-    },
-    error: {
-      color: 'red',
-      fontSize: '14px',
-      marginTop: '5px',
-    },
-  };
+  container: {
+    maxWidth: '400px',
+    margin: '0 auto',
+    padding: '20px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
+  },
+  title: {
+    color: '#333',
+    marginBottom: '20px',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column' as 'column',
+  },
+  formGroup: {
+    marginBottom: '15px',
+  },
+  label: {
+    marginBottom: '5px',
+    fontWeight: 'bold',
+  },
+  input: {
+    padding: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    fontSize: '16px',
+    width: '100%',
+  },
+  button: {
+    padding: '10px',
+    borderRadius: '4px',
+    border: 'none',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    fontSize: '16px',
+    cursor: 'pointer',
+    marginTop: '10px',
+  },
+  error: {
+    color: 'red',
+    fontSize: '14px',
+    marginTop: '5px',
+  },
+};
 
 export default Registro;
