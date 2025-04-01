@@ -24,6 +24,7 @@ jobs:
 
       - name: Instalar dependencias
         run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Instalar Grunt CLI
         run: npm install -g grunt-cli
