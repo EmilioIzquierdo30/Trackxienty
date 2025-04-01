@@ -3,7 +3,7 @@ name: Backend CI/CD with Grunt
 on:
   push:
     branches:
-      - main  # Se ejecuta en cada push a la rama principal
+      - main
   pull_request:
     branches:
       - main
@@ -22,14 +22,17 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - name: Moverse a la carpeta backend
+        run: cd backend
+
       - name: Instalar dependencias
-        run: npm install --no-audit --no-fund  # Evita errores por la falta de package-lock.json
+        run: cd backend && npm install --no-audit --no-fund
 
       - name: Instalar Grunt CLI
-        run: npm install -g grunt-cli
+        run: cd backend && npm install -g grunt-cli
 
       - name: Ejecutar Grunt
-        run: grunt default  # Cambia "default" si usas otra tarea
+        run: cd backend && grunt default  # Cambia "default" si usas otra tarea
 
       - name: Mantener backend en ejecución
-        run: nohup node conexion.js &
+        run: cd backend && nohup node conexion.js &
