@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Moverse a la carpeta backend
-        run: cd backend
+        run: cd Backend
 
       - name: Instalar dependencias
         run: cd backend && npm install --no-audit --no-fund
