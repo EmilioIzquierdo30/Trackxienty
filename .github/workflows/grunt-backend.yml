@@ -3,7 +3,7 @@ name: Backend CI/CD with Grunt
 on:
   push:
     branches:
-      - main  # Se ejecuta cuando hagas push a la rama principal
+      - main  # Se ejecuta en cada push a la rama principal
   pull_request:
     branches:
       - main
@@ -19,18 +19,17 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # Puedes cambiar la versión si es necesario
+          node-version: 18
           cache: 'npm'
 
       - name: Instalar dependencias
-        run: npm install
-        run: npm install --no-audit --no-fund
+        run: npm install --no-audit --no-fund  # Evita errores por la falta de package-lock.json
 
       - name: Instalar Grunt CLI
         run: npm install -g grunt-cli
 
       - name: Ejecutar Grunt
-        run: grunt default  # Cambia "default" por la tarea específica si tienes otra
+        run: grunt default  # Cambia "default" si usas otra tarea
 
       - name: Mantener backend en ejecución
-        run: nohup node conexion.js &  # O el archivo principal de tu backend
+        run: nohup node conexion.js &
